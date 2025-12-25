@@ -12,7 +12,7 @@ This project implements an **Agentic AI** system for gene sequencing analysis. I
 
 ## Features
 
-- 🧬 **Synthetic Dataset Generation** - Creates realistic synthetic gene sequence data
+-  **Synthetic Dataset Generation** - Creates realistic synthetic gene sequence data
 -  **Multi-Agent AI System** - Three specialized agents working in coordination
 -  **Mutation Detection** - Identifies substitutions, transitions, and transversions
 -  **Pattern Recognition** - Finds motifs, tandem repeats, and conserved regions
