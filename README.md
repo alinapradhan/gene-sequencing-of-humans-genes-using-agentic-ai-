@@ -155,4 +155,4 @@ The system generates detailed JSON reports containing:
 
 
 
-nthetic data for educational and research purposes. For clinical applications, please use validated tools and consult with genetic counselors.
+
