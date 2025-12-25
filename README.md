@@ -52,7 +52,7 @@ This will:
 
 ## Project Structure
 
-
+```
 gene-sequencing-of-humans-genes-using-agentic-ai-/
 ├── main.py                          # Main entry point
 ├── requirements.txt                 # Python dependencies
@@ -70,7 +70,7 @@ gene-sequencing-of-humans-genes-using-agentic-ai-/
 │   │   └── sequence_utils.py      # Sequence processing utilities
 │   └── orchestrator.py            # Multi-agent orchestrator
 └── tests/                          # Test files
-
+```
 
 ## Agents Description
 
