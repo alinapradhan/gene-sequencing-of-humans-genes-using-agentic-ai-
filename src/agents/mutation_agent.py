@@ -4,11 +4,18 @@ Mutation Detection Agent for identifying genetic mutations.
 
 from typing import Dict, List
 import numpy as np
-from .base_agent import BaseAgent
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from utils.sequence_utils import find_mutations, hamming_distance
+
+# Handle imports for both package and standalone execution
+try:
+    from .base_agent import BaseAgent
+    from ..utils.sequence_utils import find_mutations, hamming_distance
+except ImportError:
+    # Fallback for standalone or test execution
+    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from base_agent import BaseAgent
+    from utils.sequence_utils import find_mutations, hamming_distance
 
 
 class MutationDetectionAgent(BaseAgent):

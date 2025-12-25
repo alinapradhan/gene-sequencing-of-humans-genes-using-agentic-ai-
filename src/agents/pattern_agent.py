@@ -4,11 +4,18 @@ Pattern Recognition Agent for identifying conserved patterns and motifs in gene 
 
 from typing import Dict, List, Set
 from collections import Counter
-from .base_agent import BaseAgent
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from utils.sequence_utils import find_patterns, calculate_sequence_complexity, sliding_window_analysis
+
+# Handle imports for both package and standalone execution
+try:
+    from .base_agent import BaseAgent
+    from ..utils.sequence_utils import find_patterns, calculate_sequence_complexity, sliding_window_analysis
+except ImportError:
+    # Fallback for standalone or test execution
+    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from base_agent import BaseAgent
+    from utils.sequence_utils import find_patterns, calculate_sequence_complexity, sliding_window_analysis
 
 
 class PatternRecognitionAgent(BaseAgent):
@@ -18,12 +25,14 @@ class PatternRecognitionAgent(BaseAgent):
         """Initialize the Pattern Recognition Agent."""
         super().__init__("PatternRecognitionAgent")
         # Common genetic motifs and patterns
+        # Note: These are simplified consensus sequences for demonstration purposes
+        # In production, use verified sequences from databases like JASPAR or TRANSFAC
         self.known_motifs = {
-            'TATA_box': 'TATAAA',
-            'CAAT_box': 'GGCCAATCT',
-            'GC_box': 'GGGCGG',
-            'Kozak_sequence': 'GCCGCCACCATGG',
-            'Poly_A_signal': 'AATAAA'
+            'TATA_box': 'TATAAA',  # Promoter element
+            'CAAT_box': 'GGCCAATCT',  # Promoter element
+            'GC_box': 'GGGCGG',  # Promoter element
+            'Kozak_sequence': 'GCCGCCACCATGG',  # Translation initiation
+            'Poly_A_signal': 'AATAAA'  # Polyadenylation signal
         }
     
     def analyze(self, data: Dict) -> Dict:
@@ -69,7 +78,7 @@ class PatternRecognitionAgent(BaseAgent):
             'repeating_patterns': repeats,
             'conserved_regions': conserved_regions,
             'tandem_repeats': tandem_repeats,
-            'average_gc_content': sum(w['gc_content'] for w in window_analysis) / len(window_analysis) if window_analysis else 0
+            'average_gc_content': sum(w['gc_content'] for w in window_analysis) / len(window_analysis) if window_analysis else 0.0
         }
         
         self.log_result(result)

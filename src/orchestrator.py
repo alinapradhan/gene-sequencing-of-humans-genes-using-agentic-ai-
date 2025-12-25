@@ -7,9 +7,20 @@ This module coordinates multiple AI agents to perform comprehensive gene sequenc
 import pandas as pd
 import json
 from typing import Dict, List
-from agents.alignment_agent import SequenceAlignmentAgent
-from agents.mutation_agent import MutationDetectionAgent
-from agents.pattern_agent import PatternRecognitionAgent
+import sys
+import os
+
+# Handle imports for both package and standalone execution
+try:
+    from .agents.alignment_agent import SequenceAlignmentAgent
+    from .agents.mutation_agent import MutationDetectionAgent
+    from .agents.pattern_agent import PatternRecognitionAgent
+except ImportError:
+    # Fallback for standalone or test execution
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from agents.alignment_agent import SequenceAlignmentAgent
+    from agents.mutation_agent import MutationDetectionAgent
+    from agents.pattern_agent import PatternRecognitionAgent
 
 
 class GeneSequencingOrchestrator:

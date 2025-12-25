@@ -1,14 +1,21 @@
 """
 Sequence Alignment Agent for comparing and aligning gene sequences.
 """
-
+import pandas as pd
 from typing import Dict, List, Tuple
 import numpy as np
-from .base_agent import BaseAgent
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from utils.sequence_utils import hamming_distance, calculate_gc_content
+
+# Handle imports for both package and standalone execution
+try:
+    from .base_agent import BaseAgent
+    from ..utils.sequence_utils import hamming_distance, calculate_gc_content
+except ImportError:
+    # Fallback for standalone or test execution
+    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from base_agent import BaseAgent
+    from utils.sequence_utils import hamming_distance, calculate_gc_content
 
 
 class SequenceAlignmentAgent(BaseAgent):

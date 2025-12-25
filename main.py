@@ -4,14 +4,8 @@ Gene Sequencing Analysis using Agentic AI
 Main entry point for the gene sequencing analysis system.
 """
 
-import sys
-import os
-
-# Add src directory to path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
-
-from data.generate_dataset import SyntheticGeneDataGenerator
-from orchestrator import GeneSequencingOrchestrator
+from src.data.generate_dataset import SyntheticGeneDataGenerator
+from src.orchestrator import GeneSequencingOrchestrator
 
 
 def main():
